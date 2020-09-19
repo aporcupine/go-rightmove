@@ -106,7 +106,7 @@ func extractJSONModel(content string) (*jsonModel, error) {
 	return jsonModel, nil
 }
 
-// filterFeaturedProperties removes properties marked as featured as this will be duplicates
+// filterFeaturedProperties removes properties marked as featured as these will be duplicates
 func filterFeaturedProperties(properties []Property) []Property {
 	filteredProperties := []Property{}
 	for _, property := range properties {
