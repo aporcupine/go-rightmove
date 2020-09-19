@@ -91,8 +91,8 @@ type Property struct {
 	HasBrandPlus        bool   `json:"hasBrandPlus"`
 }
 
-// JSONModel is a representation of the data includes in a rightmove property search page
-type JSONModel struct {
+// jsonModel is a representation of the data includes in a rightmove property search page
+type jsonModel struct {
 	Properties  []Property `json:"properties"`
 	ResultCount string     `json:"resultCount"`
 }

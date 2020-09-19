@@ -1,3 +1,10 @@
+// Package rightmove implements a very basic scraper to read property details from RightMove.
+//
+// This package extracts and unmarshals the JSON object that
+// can be found at the bottom of a RightMove search page.
+//
+// NOTE: This implementation is a proof of concept only. The RightMove 'terms of use' states
+// that the use of "scraping technology" is unauthorized. Do not use this library.
 package rightmove
 
 import (
@@ -80,7 +87,7 @@ func getPageContent(ctx context.Context, url string) ([]byte, error) {
 }
 
 // extractJSONModel extracts the JSON model from the page content provided
-func extractJSONModel(content string) (*JSONModel, error) {
+func extractJSONModel(content string) (*jsonModel, error) {
 	// the JSON string appears between 'window.jsonModel =' and '</script>'
 	r := regexp.MustCompile("window\\.jsonModel = (.*)<\\/script>")
 
@@ -90,7 +97,7 @@ func extractJSONModel(content string) (*JSONModel, error) {
 	}
 
 	// unmarshal into JSONModel
-	jsonModel := &JSONModel{}
+	jsonModel := &jsonModel{}
 	err := json.Unmarshal([]byte(results[1]), jsonModel)
 	if err != nil {
 		return nil, err
